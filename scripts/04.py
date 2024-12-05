@@ -100,7 +100,7 @@ def cross_mas_fw(rows: list[str]) -> int:
     
     count = 0
     for srch in variants:
-        print(count)
+        # I initially made an error here, forgetting to add 1 and missing the last row
         for i in range(len(rows) - nrows + 1):
             for j in range(len(rows[i]) - ncols + 1):
                 if cross_mas_match(sub_list(rows, i, j, nrows, ncols), srch):
