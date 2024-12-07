@@ -62,10 +62,11 @@ def is_loop(data: np.ndarray, pos: tuple[int, int]) -> np.ndarray:
 
 def test_for_loops(data: np.ndarray, pos: tuple[int, int]) -> np.ndarray:
     """Test every location for loops"""
+    possible_pos = trace(data, pos)
     loop_count = 0
     for i in range(data.shape[0]):
         for j in range(data.shape[1]):
-            if (pos[0] != i or pos[1] != j) and data[i, j] != 8:
+            if (pos[0] != i or pos[1] != j) and data[i, j] != 8 and possible_pos[i, j] < 8:
                 new_block = data.copy()
                 new_block[i, j] = 8
                 if is_loop(new_block, pos):
